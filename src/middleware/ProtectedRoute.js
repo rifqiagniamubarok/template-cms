@@ -12,7 +12,7 @@ const ProtectedRoute = (WrappedComponent) => {
         return;
       }
       if (!session) {
-        router.push('/login');
+        router.push('/admin/login');
       }
     }, [session, status, router]);
 
@@ -24,7 +24,6 @@ const ProtectedRoute = (WrappedComponent) => {
   };
 
   // WithAuth.displayName = `WithAuth(${WrappedComponent.displayName || WrappedComponent.name || 'Component'})`;
-
   return WithAuth;
 };
 

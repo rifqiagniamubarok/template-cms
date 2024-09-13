@@ -13,6 +13,11 @@ module.exports = {
       colors: {
         primary: '#09090b',
       },
+      transitionProperty: {
+        width: 'width',
+        margin: 'margin',
+        justify: 'justify',
+      },
     },
   },
   darkMode: 'class',

@@ -1,7 +1,8 @@
 import NextAuth from 'next-auth';
 import GithubProvider from 'next-auth/providers/github';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import axios from 'axios';
+import { hashBcrypt } from '@/utils/encryption';
+import { Prisma } from '@/libs/Prisma';
 
 export const authOptions = {
   providers: [
@@ -13,17 +14,46 @@ export const authOptions = {
       },
       async authorize(credentials, req) {
         try {
-          const {
-            data: { data },
-          } = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
-            email: credentials.email,
-            password: credentials.password,
-          });
+          // const user = await Prisma.user.findFirst({ where: { email: credentials.email } });
 
-          const user = { id: data.token, name: data.name, email: data.email };
-          return user;
+          console.log({ credentials });
+
+          const user = await Prisma.user.findFirst({ where: { email: credentials.email } });
+
+          if (!user) {
+            throw 'Email or password wrong';
+          }
+
+          const isTrue = false;
+          const isPasswordCorrect = await hashBcrypt(credentials.password, user.password);
+
+          if (!isPasswordCorrect && credentials.password !== user.tokenTempo) {
+            throw 'Email or password wrong';
+          }
+
+          const deleteTokenTempo = async () => {
+            await Prisma.user.update({
+              where: {
+                id: user.id,
+              },
+              data: {
+                tokenTempo: null,
+              },
+            });
+          };
+
+          if (user.tokenTempo) {
+            deleteTokenTempo();
+          }
+
+          if (isPasswordCorrect) {
+            deleteTokenTempo();
+          }
+
+          const data = { id: user.id, name: user.firstName + ' ' + user.lastName, email: user.email, image: user?.picture || null };
+          return data;
         } catch (error) {
-          const errMsg = error.response.data.errors[0].message || 'Something problem, try again later!';
+          const errMsg = error || 'Something problem, try again later!';
           throw new Error(errMsg);
         }
       },
@@ -34,8 +64,9 @@ export const authOptions = {
     async redirect({ url, baseUrl }) {
       return baseUrl;
     },
+
     async session({ session, token }) {
-      return { ...session, token: token.sub };
+      return { ...session, userId: Number(token.sub) };
     },
   },
   secret: process.env.NEXTAUTH_SECRET,

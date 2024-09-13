@@ -4,7 +4,7 @@ import { ImageOff } from 'lucide-react';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
-const ThisImage = ({ alt, className, ...others }) => {
+const ThisImage = ({ src, alt, className, ...others }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isFail, setIsFail] = useState(false);
   const [isJustStart, setIsJustStart] = useState(true);
@@ -35,7 +35,7 @@ const ThisImage = ({ alt, className, ...others }) => {
 
   return (
     <>
-      <Image onLoad={handleLoading} alt={alt} onError={handleFail} {...others} className={classNames(className)} />
+      <Image src={src} onLoad={handleLoading} alt={alt} onError={handleFail} {...others} className={classNames(className)} />
       {isLoading && !isFail && <Skeleton className={classNames(baseStayle)} />}
     </>
   );

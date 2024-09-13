@@ -12,7 +12,7 @@ const PassedRoute = (WrappedComponent) => {
         return;
       }
       if (session) {
-        router.push('/');
+        router.push('/admin');
       }
     }, [session, status, router]);
 
