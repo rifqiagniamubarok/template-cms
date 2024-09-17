@@ -10,8 +10,8 @@ import UploadImage from './UploadImage';
 
 const GetData = ({ data, isPending, onOpenView }) => {
   const [imageSelect, setImageSelect] = useState(null);
-  const handleClick = (link, id) => {
-    onOpenView(link, id);
+  const handleClick = (link, id, slug) => {
+    onOpenView(link, id, slug);
     setImageSelect(id);
   };
   if (isPending) {
@@ -32,7 +32,7 @@ const GetData = ({ data, isPending, onOpenView }) => {
           <div
             className={classNames('w-full aspect-square relative bg-black overflow-hidden  cursor-pointer', id == imageSelect && 'border-2 border-sky-600')}
             key={id}
-            onClick={() => handleClick(link, id)}
+            onClick={() => handleClick(link, id, slug)}
           >
             <ThisImage src={link} fill alt={slug} className={'object-contain'} />
           </div>
@@ -54,12 +54,12 @@ const GalleryModal = ({ isOpen, onOpen, onOpenChange, onClose, onSelect }) => {
   };
 
   const { isPending, isError, data, error } = useQuery({
-    queryKey: [page],
+    queryKey: ['/gallery'],
     queryFn: async () => fetchData({ page }),
   });
 
-  const handleViewPhoto = (src, id) => {
-    setViewPictSrc({ src, id });
+  const handleViewPhoto = (src, id, slug) => {
+    setViewPictSrc({ src, id, slug });
   };
 
   const handleSuccessUpload = () => {
@@ -74,7 +74,7 @@ const GalleryModal = ({ isOpen, onOpen, onOpenChange, onClose, onSelect }) => {
 
   const handleSelect = () => {
     onSelect({ ...viewPictSrc });
-    setViewPictSrc({ src: null, id: null });
+    setViewPictSrc({ src: null, id: null, slug: null });
     onClose();
   };
 

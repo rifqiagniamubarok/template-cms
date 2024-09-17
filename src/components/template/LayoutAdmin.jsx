@@ -5,8 +5,9 @@ import { Button, Switch } from '@nextui-org/react';
 import { BookUser, FileText, Gauge, Images, PanelLeftOpen } from 'lucide-react';
 import SideNav from '../organisms/SideNav';
 import useActivePath from '@/hooks/useActivePath';
+import classNames from 'classnames';
 
-const LayoutAdmin = ({ titlePage, children }) => {
+const LayoutAdmin = ({ className = '', titlePage, children }) => {
   const mainRef = useRef(null);
   const navItems = [
     {
@@ -39,7 +40,7 @@ const LayoutAdmin = ({ titlePage, children }) => {
       <div className="grow max-h-screen overflow-auto">
         <div className="bg-white w-full shadow-md p-4 z-10 capitalize text-2xl font-semibold text-primary">{titlePage || pathActive}</div>
         <div className="p-2 md:p-5 ">
-          <div className="">{children}</div>
+          <div className={classNames(className)}>{children}</div>
         </div>
       </div>
     </div>
