@@ -12,6 +12,7 @@ import ts from 'highlight.js/lib/languages/typescript';
 import html from 'highlight.js/lib/languages/xml';
 import Toolbar from './Toolbar';
 import Paragraph from '@tiptap/extension-paragraph';
+import ImageResize from 'tiptap-extension-resize-image';
 
 const lowlight = createLowlight();
 
@@ -32,6 +33,7 @@ const Editor = ({ onChange }) => {
       CodeBlockLowlight.configure({
         lowlight,
       }),
+      ImageResize,
     ],
     editorProps: {
       attributes: {

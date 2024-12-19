@@ -2377,7 +2377,7 @@
   resolved "https://registry.npmjs.org/@tanstack/store/-/store-0.5.5.tgz"
   integrity sha512-EOSrgdDAJExbvRZEQ/Xhh9iZchXpMN+ga1Bnk8Nmygzs8TfiE6hbzThF+Pr2G19uHL6+DTDTHhJ8VQiOd7l4tA==
 
-"@tiptap/core@^2.6.6":
+"@tiptap/core@^2.0.0", "@tiptap/core@^2.6.6":
   version "2.6.6"
   resolved "https://registry.npmjs.org/@tiptap/core/-/core-2.6.6.tgz"
   integrity sha512-VO5qTsjt6rwworkuo0s5AqYMfDA0ZwiTiH6FHKFSu2G/6sS7HKcc/LjPq+5Legzps4QYdBDl3W28wGsGuS1GdQ==
@@ -2461,7 +2461,7 @@
   resolved "https://registry.npmjs.org/@tiptap/extension-horizontal-rule/-/extension-horizontal-rule-2.6.6.tgz"
   integrity sha512-cFEfv7euDpuLSe8exY8buwxkreKBAZY9Hn3EetKhPcLQo+ut5Y24chZTxFyf9b+Y0wz3UhOhLTZSz7fTobLqBA==
 
-"@tiptap/extension-image@^2.6.6":
+"@tiptap/extension-image@^2.0.0", "@tiptap/extension-image@^2.6.6":
   version "2.6.6"
   resolved "https://registry.npmjs.org/@tiptap/extension-image/-/extension-image-2.6.6.tgz"
   integrity sha512-dwJKvoqsr72B4tcTH8hXhfBJzUMs/jXUEE9MnfzYnSXf+CYALLjF8r/IkGYbxce62GP/bMDoj8BgpF8saeHtqA==
@@ -2506,7 +2506,7 @@
   resolved "https://registry.npmjs.org/@tiptap/extension-underline/-/extension-underline-2.6.6.tgz"
   integrity sha512-3A4HqsDM/AFb2VaeWACpGexjgI257kz0yU4jNV8uyydDR2KhqeinuEnoSoOmx9T3pL006TWfPg4vaQYPO3qvrQ==
 
-"@tiptap/pm@^2.6.6":
+"@tiptap/pm@^2.0.0", "@tiptap/pm@^2.6.6":
   version "2.6.6"
   resolved "https://registry.npmjs.org/@tiptap/pm/-/pm-2.6.6.tgz"
   integrity sha512-56FGLPn3fwwUlIbLs+BO21bYfyqP9fKyZQbQyY0zWwA/AG2kOwoXaRn7FOVbjP6CylyWpFJnpRRmgn694QKHEg==
@@ -5715,6 +5715,11 @@ tippy.js@^6.3.7:
   integrity sha512-E1d3oP2emgJ9dRQZdf3Kkn0qJgI6ZLpyS5z6ZkY1DF3kaQaBsGZsndEpHwx+eC+tYM41HaSNvNtLx8tU57FzTQ==
   dependencies:
     "@popperjs/core" "^2.9.0"
+
+tiptap-extension-resize-image@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.npmjs.org/tiptap-extension-resize-image/-/tiptap-extension-resize-image-1.2.1.tgz"
+  integrity sha512-SLMAujDa+0LN/6Iv2HtU4Uk0BL6LMh4b/r85frpdnjFDW2i6pIOfTVG8jzJQ8T1EgYHNn2YG1U2HoVAGuwLc3Q==
 
 to-regex-range@^5.0.1:
   version "5.0.1"
